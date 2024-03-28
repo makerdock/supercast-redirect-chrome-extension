@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "transform": {
+                    "host": "supercast.xyz"
+                }
+            }
+        },
+        "condition": {
+            "urlFilter": "warpcast.com/*",
+            "resourceTypes": [
+                "main_frame"
+            ]
+        }
+    }
+]
