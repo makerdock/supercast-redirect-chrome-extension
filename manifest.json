@@ -1,24 +1,19 @@
 {
     "manifest_version": 3,
-    "name": "Redirect to Supercast",
+    "name": "Warpcast Button Injector",
     "version": "1.0",
-    "description": "Automatically redirects from Warpcast to Supercast.",
+    "description": "Injects a button on warpcast.com pages when a specific div is found.",
     "permissions": [
-        "declarativeNetRequest",
-        "declarativeNetRequestFeedback",
-        "declarativeNetRequest",
-        "declarativeNetRequestWithHostAccess"
+        "activeTab"
     ],
-    "host_permissions": [
-        "*://*.warpcast.com/*"
-    ],
-    "declarative_net_request": {
-        "rule_resources": [
-            {
-                "id": "1",
-                "enabled": true,
-                "path": "rules.json"
-            }
-        ]
-    }
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.warpcast.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
 }
