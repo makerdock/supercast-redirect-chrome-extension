@@ -12,10 +12,7 @@ function injectButton() {
     // find the div that contains the text 'Invite friends, earn warps'
     const hasInviteBox = Array.from(aside.children).find(div => div.textContent?.includes('Invite friends, earn warps'));
 
-    if (!hasInviteBox) {
-        console.error('Invite friends, earn warps not found');
-        return;
-    }
+
     const buttonDOM = new DOMParser().parseFromString(buttonHtml, 'text/html').body.firstChild;
     if (!buttonDOM) {
         console.error('Button DOM not found');
@@ -32,8 +29,13 @@ function injectButton() {
     buttonDOM.querySelector('form').setAttribute('action', supercastUrl);
 
 
-    // replace the second div with the buttonDOM
-    aside.children[1].replaceWith(buttonDOM);
+    if (!hasInviteBox) {
+        // replace the second div with the buttonDOM
+        aside.children[1].replaceWith(buttonDOM);
+    } else {
+        // append it to the aside as the second child
+        aside.insertBefore(buttonDOM, aside.children[2]);
+    }
 }
 
 let attempts = 0;
