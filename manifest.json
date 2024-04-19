@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Warpcast Button Injector",
-    "version": "1.0",
-    "description": "Injects a button on warpcast.com pages when a specific div is found.",
+    "name": "Redirect to Supercast",
+    "version": "1.1.2",
+    "description": "Automatically redirects from Warpcast to Supercast.",
     "permissions": [
         "activeTab"
     ],
