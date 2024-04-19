@@ -34,7 +34,16 @@ function injectButton() {
         aside.children[1].replaceWith(buttonDOM);
     } else {
         // append it to the aside as the second child
-        aside.insertBefore(buttonDOM, aside.children[2]);
+        const children = Array.from(aside.children);
+
+        // push the button to the second position
+        children.splice(1, 0, buttonDOM);
+
+        // clear the aside
+        aside.innerHTML = '';
+
+        // append the children
+        children.forEach(child => aside.appendChild(child));
     }
 
     return true
@@ -42,13 +51,15 @@ function injectButton() {
 
 let attempts = 0;
 const maxAttempts = 30;
-const interval = 500;
+const interval = 1000;
 
-const intervalId = setInterval(function () {
-    const success = injectButton();
-    attempts++;
+setTimeout(() => {
+    const intervalId = setInterval(function () {
+        const success = injectButton();
+        attempts++;
 
-    if (success || attempts >= maxAttempts) {
-        clearInterval(intervalId);
-    }
-}, interval);
+        if (success || attempts >= maxAttempts) {
+            clearInterval(intervalId);
+        }
+    }, interval);
+}, 3000)
