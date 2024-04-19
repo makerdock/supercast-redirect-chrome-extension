@@ -36,6 +36,8 @@ function injectButton() {
         // append it to the aside as the second child
         aside.insertBefore(buttonDOM, aside.children[2]);
     }
+
+    return true
 }
 
 let attempts = 0;
